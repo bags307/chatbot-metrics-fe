@@ -8,8 +8,8 @@ function Index(props) {
 
   return (
     <Container>
-      <EndDate placeholder={newEndDate}  onInput={e => setNewEndDate(e.target.value)}></EndDate>
-      <StartDate placeholder={newStartDate} onInput={e => setNewStartDate(e.target.value)}></StartDate>
+      <EndDate placeholder={newEndDate}  onInput={e => setNewEndDate(e.target.value)}/>
+      <StartDate placeholder={newStartDate} onInput={e => setNewStartDate(e.target.value)}/>
       <Submit onClick={() => props.setDate({dateStart:newStartDate, dateEnd:newEndDate})}>SUMBIT</Submit>
         <div>{newEndDate}</div>
     </Container>

@@ -1,23 +1,27 @@
-import React, { useState, useReducer, useEffect, Component } from 'react';
-import logo from './logo.svg';
-import './App.css';
-import styled from 'styled-components'
-import Statbox from './components/statbox/';
-import DateBox from './components/dateBox'
+import React, { useState,  useEffect, Component } from 'react';
+
+
+import { BrowserRouter as Router, Route } from "react-router-dom";
+import "./icons.js";
+import HomeDash from "./screens/HomeDash";
+import "./style.css";
+import './App.css'
+import SignIn from './screens/SignIn'
+
+
+
 function App() {
-  const [date, setDate] = useState({dateStart:"2019-12-01", dateEnd:'2019-12-31'});
 
-  return (
-    <div className="App">
-      <header className="App-header">
-          <div>start:{date.dateStart}</div>
-          <Statbox title='CONVERSATIONS' type='conversations' dateStart={date.dateStart} dateEnd={date.dateEnd}/>
-          <Statbox title='PARTICIPANTS' type='participants' dateStart={date.dateStart} dateEnd={date.dateEnd}/>
-          <DateBox setDate={setDate}></DateBox>
-      </header>
+    return (
+        <Router>
+            <Route path="/" exact component={SignIn} />
+            <Route path="/HomeDash/" exact component={HomeDash} />
 
-    </div>
-  );
+
+        </Router>
+    );
 }
 
 export default App;
+
+
