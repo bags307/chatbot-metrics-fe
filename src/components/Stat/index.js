@@ -67,7 +67,7 @@ export default function Stat(props) {
             </Typography>
             <div>
                 <Link color="primary" href="#" onClick={preventDefault}>
-                    View {props.title.toLowerCase()}
+                    View {(props.title.toLowerCase() != 'total messages') ? props.title.toLowerCase() : 'messages'}
                 </Link>
             </div>
         </React.Fragment>

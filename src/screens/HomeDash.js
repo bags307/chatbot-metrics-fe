@@ -28,7 +28,7 @@ import Stat from '../components/Stat';
 import clsx from 'clsx'
 import {mainListItems} from "../components/SiderMenuList/index";
 import SidebarDatePicker from "../components/SidebarDatePicker"
-
+import PopularEntities from '../components/PopularEntities'
 const drawerWidth = 240
 const useStyles = makeStyles(theme => ({
     root: {
@@ -125,10 +125,17 @@ function Copyright() {
 }
 
 function HomeDash(props) {
+//State setters and defaults
 
     const [date, setDate] = useState({start:'2019-12-01', end:'2019-12-31'})
-  //
+
     const [open, setOpen] = useState('true')
+
+    const [entities, setEntities] = useState([])
+
+    const handleUpdateEntities = (entities) => {
+        setEntities(entities)
+    }
     const updateDate = (dates) => {
         setDate({start:dates.start, end:dates.end})
     }
@@ -176,6 +183,8 @@ function HomeDash(props) {
                 }}
                 open={open}
                 setDate={updateDate}
+                startDate = {date.start}
+                endDate = {date.end}
             >
                 <div className={classes.toolbarIcon}>
                     <IconButton onClick={handleDrawerClose}>
@@ -214,11 +223,18 @@ function HomeDash(props) {
                             </Paper>
                         </Grid>
                         {/* Recent Orders */}
-                        <Grid item xs={12}>
+                        <Grid item xs={12} md={6} lg={12}>
                             <Paper className={classes.paper}>
-                                {date.start} {date.end}
+                                <PopularEntities entities={entities} type='popular' update={handleUpdateEntities} start={date.start} end={date.end} title='POPULAR ENTITIES' />
                             </Paper>
                         </Grid>
+
+                        <Grid item xs={12} md={6} lg={12}>
+                            <Paper className={classes.paper}>
+                                <PopularEntities entities={entities} type='unpopular' start={date.start} end={date.end} title='UNUSED ENTITIES' />
+                            </Paper>
+                        </Grid>
+
                     </Grid>
                     <Box pt={4}>
                         <Copyright />

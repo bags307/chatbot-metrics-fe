@@ -51,9 +51,10 @@ export default  function SidebarDateSelect(props) {
                         'aria-label': 'change date',
                     }}
                 />
-                <Button onClick={() => props.setDate({start:startDate.toString(), end:endDate.toString()})}>Update Dates</Button>
-                <div date={startDate}>{JSON.stringify(startDate)}</div>
-                <div date={startDate}>{JSON.stringify(endDate)}</div>
+
+                <Button variant='contained' color='primary' onClick={() => props.setDate({start:startDate.toString(), end:endDate.toString()})}>Update Dates</Button>
+                {/*<div date={startDate}>{JSON.stringify(startDate)}</div>
+                <div date={startDate}>{JSON.stringify(endDate)}</div>*/}
             </Grid>
         </MuiPickersUtilsProvider>
     )
